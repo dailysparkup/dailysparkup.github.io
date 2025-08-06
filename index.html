@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Sparkup</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #fff;
+      background: url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .title-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    .title-section img {
+      height: 140px;
+      width: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .title-section h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    .title-section h1 span {
+      display: block;
+    }
+
+    .quote-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      padding: 50px 50px;
+      font-size: 2.9rem;
+      font-weight: bold;
+      max-width: 800px;
+      flex: 1;
+    }
+
+   
+    .nav-section {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .nav-link {
+      padding: 50px 100px;
+      background-color: rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .heading-text {
+        text-align: center;
+      }
+
+      .quote-box {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-row">
+      <!-- Left side: Image + Heading -->
+      <div class="title-section">
+        <C:\Users\user\Desktop>
+        <img src="logo.jpg" alt="Logo">
+        <h1>
+          <span>Daily</span>
+          <span>Sparkup</span>
+        </h1>
+      </div>
+
+      <!-- Right side: Quote box -->
+      <div class="quote-box">
+        "Push yourself, because no one else is going to do it for you."
+      </div>
+    </div>
+
+    <!-- Navigation Section (optional) -->
+ <div class="nav-section">
+    <a href="article1.html" class="nav-link">Link 1</a>
+    <a href="article2.html" class="nav-link">Link 1</a>
+    <a href="article3.html" class="nav-link">Link 1</a>
+  </div>
+
+  </div>
+
+</body>
+</html>
