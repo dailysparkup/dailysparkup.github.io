@@ -72,33 +72,66 @@
       border-radius: 25px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
       padding: 50px 50px;
-      font-size: 2.9rem;
+      font-size: 2rem;
       font-weight: bold;
       max-width: 800px;
       flex: 1;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
-   
     .nav-section {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
       flex-wrap: wrap;
       margin-bottom: 60px;
     }
 
-    .nav-link {
-      padding: 50px 100px;
-      background-color: rgba(255, 255, 255, 0.1);
+    .nav-box {
+      width: 250px;
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      position: relative;
+      overflow: hidden;
       text-decoration: none;
       color: white;
-      font-weight: bold;
-      border-radius: 10px;
-      transition: background-color 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .nav-link:hover {
-      background-color: rgba(255, 255, 255, 0.3);
+    .nav-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+    }
+
+    .nav-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1));
+      z-index: 1;
+    }
+
+    .nav-text {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    footer {
+      text-align: center;
+      color: #ccc;
+      font-size: 0.9rem;
+      margin-top: 60px;
     }
 
     @media (max-width: 768px) {
@@ -113,7 +146,13 @@
       }
 
       .quote-box {
-        font-size: 1.5em;
+        font-size: 1.5rem;
+        padding: 30px;
+      }
+
+      .nav-section {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -122,9 +161,8 @@
 
   <div class="container">
     <div class="header-row">
-      <!-- Left side: Image + Heading -->
+      <!-- Logo & Title -->
       <div class="title-section">
-        <C:\Users\user\Desktop>
         <img src="logo.jpg" alt="Logo">
         <h1>
           <span>Daily</span>
@@ -132,20 +170,64 @@
         </h1>
       </div>
 
-      <!-- Right side: Quote box -->
-      <div class="quote-box">
+      <!-- Quote Box -->
+      <div class="quote-box" id="quote-box">
         "Push yourself, because no one else is going to do it for you."
       </div>
     </div>
 
-    <!-- Navigation Section (optional) -->
- <div class="nav-section">
-    <a href="article1.html" class="nav-link">Link 1</a>
-    <a href="article2.html" class="nav-link">Link 1</a>
-    <a href="article3.html" class="nav-link">Link 1</a>
+    <!-- Navigation Boxes -->
+    <div class="nav-section">
+      <a href="article1.html" class="nav-box" style="background-image: url('plan.jpg');">
+        <div class="nav-text">Plane the Work, Work the Plan</div>
+      </a>
+      <a href="article2.html" class="nav-box" style="background-image: url('practice.jpg');">
+        <div class="nav-text">Practice makes Perfection</div>
+      </a>
+      <a href="article3.html" class="nav-box" style="background-image: url('Nopain.jpg');">
+        <div class="nav-text">No Pain, No Gain.</div>
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      © 2025 Daily Sparkup. All rights reserved.
+    </footer>
   </div>
 
-  </div>
+  <!-- Quote Script -->
+  <script>
+    const quotes = [
+      "Push yourself, because no one else is going to do it for you.",
+      "Don’t watch the clock; do what it does. Keep going.",
+      "Success doesn’t just find you. You have to go out and get it.",
+      "The harder you work for something, the greater you’ll feel when you achieve it.",
+      "Dream it. Wish it. Do it.",
+      "Great things never come from comfort zones.",
+      "Push past your limits — greatness lies just beyond them.",
+      "Wake up with determination. Go to bed with satisfaction.",
+      "Don’t stop when you’re tired. Stop when you’re done.",
+      "Do something today that your future self will thank you for.",
+      "Little things make big days.",
+      "It’s going to be hard, but hard does not mean impossible.",
+      "Don’t wait for opportunity. Create it.",
+      "Sometimes we’re tested not to show our weaknesses, but to discover our strengths.",
+      "The key to success is to focus on goals, not obstacles.",
+      "Start where you are. Use what you have. Do what you can.",
+      "Keep going. Everything you need will come to you at the perfect time.",
+      "Doubt kills more dreams than failure ever will.",
+      "Discipline is the bridge between goals and accomplishment.",
+      "If it doesn’t challenge you, it won’t change you."
+    ];
+
+    let index = 0;
+    const quoteBox = document.getElementById('quote-box');
+
+    setInterval(() => {
+      index = (index + 1) % quotes.length;
+      quoteBox.textContent = `"${quotes[index]}"`;
+    }, 5000);
+  </script>
 
 </body>
 </html>
