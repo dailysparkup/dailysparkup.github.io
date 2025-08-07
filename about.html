@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Daily Sparkup</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      background: #0d0d0d;
+      color: #f0f0f0;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+    h1 {
+      text-align: center;
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
+    hr {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(to right, #444, #999, #444);
+      margin: 30px 0;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>About Daily Sparkup</h1>
+    <p>
+      Welcome to <strong>Daily Sparkup</strong> — a digital space born from a simple desire: to ignite a spark of motivation in every reader.
+    </p>
+
+    <p>
+      We’re a small, independent team of two passionate individuals driven by the power of words and the belief that a single quote or story can change a person’s day — or even their life.
+    </p>
+
+    <p>
+      Our mission is to inspire, encourage, and energize you through carefully chosen quotes, meaningful reflections, and thought-provoking insights. Each piece of content is crafted with sincerity, free from trends or distractions, and focused on offering something real.
+    </p>
+
+    <p>
+      We believe in authenticity, creativity, and consistency. You won’t find filler or fluff here — only words we stand by and messages we believe in.
+    </p>
+
+    <p>
+      Thank you for being part of our journey. Whether you visit us daily or occasionally, we’re grateful you’re here — and we hope Daily Sparkup becomes a spark of light in your day.
+    </p>
+
+    <hr />
+
+    <div class="footer">
+      © <span id="year"></span> Daily Sparkup. All rights reserved.
+    </div>
+  </div>
+
+  <script>
+    // Auto-update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
