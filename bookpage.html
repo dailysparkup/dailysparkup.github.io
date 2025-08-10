@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Motivational Books | YourSiteName</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+
+    header {
+      background: #000;
+      color: #ffc107;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: #ccc;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      flex: 1;
+    }
+
+    .book-card {
+      background: #000;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(255,255,255,0.05);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.2s;
+      color: white;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .book-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    .book-card h3 {
+      font-size: 1.2rem;
+      margin: 1rem 0 0.5rem;
+      color: #ffc107;
+    }
+
+    .book-card p {
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    .book-card .button-group {
+      margin-top: 1rem;
+    }
+
+    .book-card a {
+      display: inline-block;
+      margin: 0.3rem;
+      background: #ffc107;
+      color: black;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .book-card a:hover {
+      background: #e0a800;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #000;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Top Motivational Books</h1>
+    <p>Empower your mind with these life-changing reads</p>
+  </header>
+
+  <div class="container">
+    <div class="book-grid">
+
+      <!-- Book 1 -->
+      <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/61PjvY4w6qL._SY385_.jpg" alt="Money Behind the Red Door" />
+        <h3>Money Behind The Red Door</h3>
+        <p> Unlock Hidden Wealth Secrets to Master Financial Strategies, Build Abundance, and Achieve Lasting Freedom.</p>
+        <div class="button-group">
+          <a href="https://www.amazon.com/Money-Behind-Red-Door-Strategies/dp/B0FH2ZGY4S?&linkCode=ll1&tag=dailysparkupb-20&linkId=db3afeacfa1fff62bde48ea1c6754043&language=en_US&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- Book 2 - Includes Free PDF -->
+      <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/81GiL-vCvCL._SY425_.jpg" alt="Think and Grow Rich" />
+        <h3>Think and Grow Rich</h3>
+        <p>Read yourself into a fortune with this time-tested classic that teaches you invaluable money-making secrets. Over 15 million copies sold worldwide!
+.</p>
+        <div class="button-group">
+          <a href="https://www.amazon.com/Think-Grow-Rich-Napoleon-Hill/dp/0449214923?crid=1BGTV2ZA45JLZ&dib=eyJ2IjoiMSJ9.WsF1bpsny-zMkGaFwa8_kcks8URHFx8phDfeEILa21yM5-yF-nrV21myncRzLq6HnlZgEvPaRkJGPDY8PngY1PFTlTZxmeZ2CvyJcELV5CqmnlCEPWmsCaLD2YwjtM50n2DFNIVdBbWAetPufC_RyXJUDOmmvdGWITXTMJh6_f_sKs0yxXCEZpKY5cgD6pevCXaXbxlpFZJcjMjyTefsRtlZQLnGxWpf7mvLWQAxM9U.xFWXwWLPAdiQ0O0VHoradxtAYds6M7G6guLoXc3sp2s&dib_tag=se&keywords=think+and+grow+rich+paperback&qid=1754751290&s=books&sprefix=think+and+grow+rich+paperbook%2Cstripbooks-intl-ship%2C380&sr=1-1&linkCode=ll1&tag=dailysparkupb-20&linkId=3224075b96596eb15ce7d7084fb84acf&language=en_US&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+          <a href="https://apex.oracle.com/pls/apex/lonestar/r/files/static/v13Y/Think-And-Grow-Rich_2011-06.pdf" target="_blank">Free PDF</a>
+        </div>
+      </div>
+
+      <!-- Book 4 -->
+      <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/71x-KKQIm-L._SY342_.jpg" alt="Atomic Habits" />
+        <h3>Atomic Habits</h3>
+        <p> An Easy and Proven Way to Build Good Habits and Break Bad Ones by James Clear.</p>
+        <div class="button-group">
+          <a href="https://your-affiliate-link.com/book3" target="_blank">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- Book 4 -->
+      <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/61yG10WfN4L._SY385_.jpg" alt="As a Man Thinketh" />
+        <h3>As A Man Thinketh</h3>
+        <p>The Vision that you glorify in your mind, the Ideal that you enthrone in your heart—this you will build your life by, this you will become.
+.</p>
+        <div class="button-group">
+          <a href="https://www.amazon.com/As-Man-Thinketh-Original-Classics/dp/1954839367?crid=3JOMLSZT43JFM&dib=eyJ2IjoiMSJ9.iChXj0A-4hUFaYPUEZl0YIU0ZEZpemYdJSsGZ2EEAIpatx3Q6j-VDM7jVNhxVSzvP1DlxHdL0YpIsaHoMadP8eUK2z_7Rym5HNsbkyR811-BHHuyei_D8fa0borsUD7wcmtoKj4czuuHmekDim4c7LL7NArrj5Uym_KvrY0BvdmO1EMqKu8_pZcwudBwpHYmw916UyHaXNoQJIJLxgQzHItLmTqqkglrrcJknGuGGUs.Ppa6gmHKH_oRGZVbrlMGdErHRFT9Ish-EoUViNkJhoo&dib_tag=se&keywords=as+a+man+thinketh&qid=1754752268&s=books&sprefix=As+a%2Cstripbooks-intl-ship%2C413&sr=1-1&linkCode=ll1&tag=dailysparkupb-20&linkId=f31bbdd7d5365dc4afe86f07fc1d3396&language=en_US&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+          <a href="https://wahiduddin.net/thinketh/as_a_man_thinketh.pdf" target="_blank">Free PDF</a>
+        </div>
+      </div>
+
+      <!-- Book 5 -->
+      <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/81wZXiu4OiL._SY385_.jpg" alt="The Psychology Of Money" />
+        <h3>The Psychology Of Money</h3>
+        <p>OVER 8 MILLION COPIES SOLD AROUND THE WORLD… The Psychology of Money is the original bestselling classic from the author of the new book, Same as Ever..</p>
+        <div class="button-group">
+          <a href="https://www.amazon.com/Psychology-Money-Timeless-lessons-happiness/dp/0857197681?crid=RTMRQEU97X4&dib=eyJ2IjoiMSJ9.1Ej9TpPoVuWM_km1joB3iu1ZQkKLCWeZjawE22NW43k-9Wx_1xbX4tcXBiV_AeowMCs531AX5OePI3X-vOGRmdVUB8IM3fvxw3ZnJI1yeuy4yfr1xlMCK1rG0RyEeoI0KUi7HPgrGjOLoU50LNxhpDQP5SpqSJSwZFbgPrLFj4yHDUWPcz2Yo_tKyL-4KXP7fTFgW7G_YcX99bfI5yYkhz2MC6tLTdO9iqDQSdH4y9A.J34rFV7pFCVaLkjFm05ohcfPQ5i9mUtqsfkRi8ogLOo&dib_tag=se&keywords=psychology+of+money&qid=1754752747&s=books&sprefix=Psych%2Cstripbooks-intl-ship%2C353&sr=1-1&linkCode=ll1&tag=dailysparkupb-20&linkId=c3a8faa776f395467441e7515445376f&language=en_US&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- Book 6 -->
+      <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/610Cc-ScUSL._SY445_SX342_ControlCacheEqualizer_.jpg" alt="Acres Of Diamonds" />
+        <h3>Acres Of Diamonds</h3>
+        <p>Russell Conwell (1843-1925) was an American Baptist minister best remembered as the founder and first president of Temple University and for his inspirational lecture, "Acres of Diamonds" (1913).</p>
+        <div class="button-group">
+          <a href="https://www.amazon.com/Acres-Diamonds-Russell-H-Conwell/dp/1660319013?crid=WGMD80DIHZ9E&dib=eyJ2IjoiMSJ9.a7vxsKPXli_Uqv9QUlVeVPMDZnbbHNqwFvMnBwMTh1tw_jP7CMyRveQ6jQKIQIPmN5liP47Ju6R1MbcQqALmuS1Gpg_-L1_h9hb8B3hk0fBfMN5fhrpewvPolBJAMsCBJiJo7g3mtNFi0jz1YOsAEVYMMWMI4J0ATBeoQ3hkf5hSORpqac9rbtIswlioKM__CQiosMe_bB0dXDSPicGLzQXM8qQkGCx3fZYm-IeH_2c.GsYWDd64Q6X9jmfEUpoJLDReNsrVutIP59mhLbOVyic&dib_tag=se&keywords=acres+of+diamonds&qid=1754752981&s=books&sprefix=Acres%2Cstripbooks-intl-ship%2C753&sr=1-1&linkCode=ll1&tag=dailysparkupb-20&linkId=33d9a6cbdb0f6a11146de3a3daab1632&language=en_US&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+          <a href="https://mc2method.org/books/AcresOfDiamonds.pdf" target="_blank">Free PDF</a>
+        </div>
+      </div>
+
+      <!-- Book 7 -->
+      <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/71YxsXL5wjL._SY385_.jpg" alt="Awaken The Giant Within" />
+        <h3>Awaken The Giant Within</h3>
+        <p>Wake up and take control of your life! From the bestselling author of Inner Strength, Unlimited Power, and MONEY Master the Game, Anthony Robbins, the nation's leader in the science of peak performance, shows you his most effective strategies and techniques for mastering your emotions, your body, your relationships, your finances, and your life.
+</p>
+        <div class="button-group">
+          <a href="https://www.amazon.com/Awaken-Giant-Within-Immediate-Emotional/dp/0671791540?crid=3AOY33JZNG45H&dib=eyJ2IjoiMSJ9.SaIhdv6tP-UIbBSVnFwPClAKprZtiPBFtjOLbhr1x5YJFATG6SiIW0tod4L20LHURwdQpNTXWSnWnIX8jY7wKux2Z9QbSPM3ti1vza0WznJCLkQuJ0KMRsqpKwY6GOGmx5dLcULQZMfCC198HqDumFv7Y569_XB2fi4YlPWhID-69HC1ErMkE_GB4kZJBd9tFZMRE-qVX3KRhSE_K0BGYPHibUBluhxFKpQoRFVZYYA.lU-hmgf4Hl4pG9s6ugmaZ9CjQhiPwmav3RwDZhgt3a8&dib_tag=se&keywords=awaken+the+giant+within&qid=1754753314&s=books&sprefix=Awaken+th%2Cstripbooks-intl-ship%2C587&sr=1-1&linkCode=ll1&tag=dailysparkupb-20&linkId=fa6f098c4047f3f664f5df6312124b7c&language=en_US&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- Book 8 -->
+      <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/911Wae4VenL._SY385_.jpg" alt="The Science of Getting Rich" />
+        <h3>The Science of Getting Rich</h3>
+        <p>The step-by-step scientific approach to attracting financial and spiritual wealth
+.</p>
+        <div class="button-group">
+          <a href="https://www.amazon.com/Science-Getting-Rich-Attracting-Financial/dp/1594772096?crid=2KXHIEHDSKLKG&dib=eyJ2IjoiMSJ9.VnHkuU21Ycnd3qjceY_TVnaCrLLsCTMT1oyJ167NmzwWDZ48UPaPP-zPjUlJk7DogNej5RT2cwVTWYf_4R9KUtKKvQlLbHfeGHxyC2Bosxsf8FqPyDvxS0CKNRENylAn79eY5o53uyCOJJSLxrdF2rKXn6FMjO2UKDYKILsEe7LgG0hRJqzuy01YnlVeJmqgkFA8hnxhXbu0W4IVs5VH3xzM9sej7rSYfuC3dQcu_xQ.5kUkbom4kzJKD-XYGN1J6MqoMRK4-D7xs-qkcL-Mr7k&dib_tag=se&keywords=the+science+of+getting+rich&qid=1754753566&s=books&sprefix=The+Science+of+Getting+Rich%2Cstripbooks-intl-ship%2C548&sr=1-2&linkCode=ll1&tag=dailysparkupb-20&linkId=2dd9a4a279ee89a6b51f1c04541e8446&language=en_US&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+          <a href="visit.thesecret.tv/science-pdf" target="_blank">Free PDF</a>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+  <footer>
+    © 2025 YourSiteName. Some links may be affiliate links. I may earn a commission from qualifying purchases.
+  </footer>
+
+</body>
+</html>
