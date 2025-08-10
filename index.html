@@ -11,8 +11,8 @@
 		'width' : 728,
 		'params' : {}
 	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/ca77fa51f5908086b8dbcb6cdabaf059/invoke.js"></script>
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/ca77fa51f5908086b8dbcb6cdabaf059/invoke.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Daily Sparkup</title>
@@ -128,6 +128,11 @@
       inset: 0;
       background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1));
       z-index: 1;
+      transition: background 0.3s ease;
+    }
+
+    .nav-box:hover::before {
+      background: linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0.05));
     }
 
     .nav-text {
@@ -139,21 +144,68 @@
       z-index: 2;
     }
 
-    footer {
+    /* New section titles */
+    .section-heading {
+      color: #ffcc00; /* yellow */
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 40px 0 20px 0;
       text-align: center;
-      color: #ccc;
-      font-size: 0.9rem;
-      margin-top: 60px;
+    }
+
+    /* New special nav box for Books */
+    .book-nav-box {
+      width: 750px; /* 3x width of 250px */
+      height: 250px;
+      border: 6px solid #ffcc00; /* thick yellow border */
+      border-radius: 15px;
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 8px 25px rgba(255, 204, 0, 0.7);
+      margin: 0 auto 60px auto;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 30px 25px 30px;
+      font-weight: bold;
+      font-size: 1.6rem;
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .book-nav-box::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 90px;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      z-index: 1;
+    }
+
+    .book-nav-box:hover {
+      box-shadow: 0 12px 40px rgba(255, 204, 0, 1);
+    }
+
+    /* To keep text above gradient */
+    .book-nav-box span {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .book-nav-box {
+        width: 100%; /* same width as nav boxes on mobile */
+      }
     }
 
     @media (max-width: 768px) {
       .header {
         flex-direction: column;
         align-items: center;
-        text-align: center;
-      }
-
-      .heading-text {
         text-align: center;
       }
 
@@ -166,6 +218,19 @@
         flex-direction: column;
         align-items: center;
       }
+
+      .nav-box {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 30px;
+      }
+    }
+
+    footer {
+      text-align: center;
+      color: #ccc;
+      font-size: 0.9rem;
+      margin-top: 60px;
     }
   </style>
 </head>
@@ -187,10 +252,25 @@
         "Push yourself, because no one else is going to do it for you."
       </div>
     </div>
+
     <div class="section-heading">
-  <h2><center>Need a Boost? We’ve Got the Spark.</center></h2>
-  <hr>
-</div>
+      <h3><center>Need a Boost? We’ve Got the Spark.</center></h3>
+      <hr>
+    </div>
+
+    <!-- New Section: Read these Books -->
+    <div class="section-heading" style="margin-top: 60px; color: #ffcc00;">
+      Read these Books
+    </div>
+
+    <a href="bookpage.html" class="book-nav-box" style="background-image: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80');" target="_blank" rel="noopener noreferrer">
+      <span>Reading Makes You Perfect</span>
+    </a>
+
+    <!-- New Section: Read our articles -->
+    <div class="section-heading" style="margin-top: 60px; color: #ffcc00;">
+      Read our articles
+    </div>
 
     <!-- Navigation Boxes -->
     <div class="nav-section">
@@ -212,10 +292,10 @@
       <a href="article3.html" class="nav-box" style="background-image: url('Nopain.jpg');">
         <div class="nav-text">No Pain, No Gain.</div>
       </a>
-            <a href="article4.html" class="nav-box" style="background-image: url('Success.jpg');">
+      <a href="article4.html" class="nav-box" style="background-image: url('Success.jpg');">
         <div class="nav-text">Success is not an Accident.</div>
       </a>
-        <a href="article5.html" class="nav-box" style="background-image: url('Stay.jpg');">
+      <a href="article5.html" class="nav-box" style="background-image: url('Stay.jpg');">
         <div class="nav-text">Stay Hungry, Stay Foolish.</div>
       </a>
     </div>
@@ -340,21 +420,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
