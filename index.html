@@ -78,11 +78,13 @@
       display: block;
     }
 
+    /* Updated quote-box with glowing shadow */
     .quote-box {
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
       border-radius: 25px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      /* glowing silver shadow */
+      box-shadow: 0 0 30px 5px rgba(192, 192, 192, 0.8);
       padding: 50px 50px;
       font-size: 2rem;
       font-weight: bold;
@@ -93,6 +95,18 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      transition: box-shadow 3.6s ease;
+      animation: glow 2.5s infinite alternate;
+    }
+
+    /* Glow animation */
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 40px rgba(192, 192, 192, 0.5);
+      }
+      100% {
+        box-shadow: 0 0 60px rgba(220, 220, 220, 1);
+      }
     }
 
     .nav-section {
@@ -237,6 +251,11 @@
 <body>
 
   <div class="container">
+    <!-- Hamburger Icon moved inside container and position changed -->
+    <div style="position: relative; top: 20px; left: 20px; z-index: 1000;">
+      <i class="fas fa-bars" id="menuBtn" style="font-size: 28px; color: white; cursor: pointer;"></i>
+    </div>
+
     <div class="header-row">
       <!-- Logo & Title -->
       <div class="title-section">
@@ -345,11 +364,6 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 />
 
-<!-- Hamburger Icon -->
-<div style="position: fixed; top: 20px; left: 20px; z-index: 1000;">
-  <i class="fas fa-bars" id="menuBtn" style="font-size: 28px; color: white; cursor: pointer;"></i>
-</div>
-
 <!-- Sidebar -->
 <div id="sidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
@@ -367,7 +381,7 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 999;
+    z-index: 1100; /* updated z-index */
     top: 0;
     left: 0;
     background-color: #111;
@@ -421,5 +435,3 @@
 
 </body>
 </html>
-
-
