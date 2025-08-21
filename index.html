@@ -1,31 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daily Sparkup</title>
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico?v=1" type="image/x-icon">
-
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
-
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
   <script type="text/javascript">
-	atOptions = {
-		'key' : 'ca77fa51f5908086b8dbcb6cdabaf059',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
+    atOptions = {
+      'key' : 'ca77fa51f5908086b8dbcb6cdabaf059',
+      'format' : 'iframe',
+      'height' : 90,
+      'width' : 728,
+      'params' : {}
+    };
   </script>
   <script type="text/javascript" src="//www.highperformanceformat.com/ca77fa51f5908086b8dbcb6cdabaf059/invoke.js"></script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Daily Sparkup</title>
+
   <style>
     body {
       margin: 0;
@@ -84,16 +79,13 @@
       text-align: left;
     }
 
-    .title-section h1 span {
-      display: block;
-    }
+    .title-section h1 span { display: block; }
 
-    /* Updated quote-box with glowing shadow */
+    /* Quote Box */
     .quote-box {
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
       border-radius: 25px;
-      /* glowing silver shadow */
       box-shadow: 0 0 30px 5px rgba(192, 192, 192, 0.8);
       padding: 50px 50px;
       font-size: 2rem;
@@ -105,18 +97,17 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      transition: box-shadow 3.6s ease;
       animation: glow 2.5s infinite alternate;
     }
 
-    /* Glow animation */
     @keyframes glow {
-      0% {
-        box-shadow: 0 0 40px rgba(192, 192, 192, 0.5);
-      }
-      100% {
-        box-shadow: 0 0 60px rgba(220, 220, 220, 1);
-      }
+      0% { box-shadow: 0 0 40px rgba(192,192,192,0.5); }
+      100% { box-shadow: 0 0 60px rgba(220,220,220,1); }
+    }
+
+    #quote-text {
+      transition: opacity 0.6s ease-in-out;
+      display: inline-block;
     }
 
     .nav-section {
@@ -143,7 +134,7 @@
 
     .nav-box:hover {
       transform: translateY(-10px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.6);
     }
 
     .nav-box::before {
@@ -168,26 +159,24 @@
       z-index: 2;
     }
 
-    /* New section titles */
     .section-heading {
-      color: #ffcc00; /* yellow */
+      color: #ffcc00;
       font-size: 2rem;
       font-weight: bold;
       margin: 40px 0 20px 0;
       text-align: center;
     }
 
-    /* New special nav box for Books */
     .book-nav-box {
-      width: 750px; /* 3x width of 250px */
+      width: 750px;
       height: 250px;
-      border: 6px solid #ffcc00; /* thick yellow border */
+      border: 6px solid #ffcc00;
       border-radius: 15px;
       position: relative;
       overflow: hidden;
       background-size: cover;
       background-position: center;
-      box-shadow: 0 8px 25px rgba(255, 204, 0, 0.7);
+      box-shadow: 0 8px 25px rgba(255,204,0,0.7);
       margin: 0 auto 60px auto;
       color: white;
       text-decoration: none;
@@ -210,64 +199,67 @@
     }
 
     .book-nav-box:hover {
-      box-shadow: 0 12px 40px rgba(255, 204, 0, 1);
+      box-shadow: 0 12px 40px rgba(255,204,0,1);
     }
 
-    /* To keep text above gradient */
-    .book-nav-box span {
-      position: relative;
-      z-index: 2;
-    }
+    .book-nav-box span { position: relative; z-index: 2; }
 
-    /* Responsive */
     @media (max-width: 991px) {
-      .book-nav-box {
-        width: 100%; /* same width as nav boxes on mobile */
-      }
+      .book-nav-box { width: 100%; }
     }
 
     @media (max-width: 768px) {
-      .header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .quote-box {
-        font-size: 1.5rem;
-        padding: 30px;
-      }
-
-      .nav-section {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .nav-box {
-        width: 100%;
-        max-width: 300px;
-        margin-bottom: 30px;
-      }
+      .header-row { flex-direction: column; align-items: center; text-align: center; }
+      .quote-box { font-size: 1.5rem; padding: 30px; }
+      .nav-section { flex-direction: column; align-items: center; }
+      .nav-box { width: 100%; max-width: 300px; margin-bottom: 30px; }
     }
 
-    footer {
-      text-align: center;
-      color: #ccc;
-      font-size: 0.9rem;
-      margin-top: 60px;
+    footer { text-align: center; color: #ccc; font-size: 0.9rem; margin-top: 60px; }
+
+    /* Sidebar */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1100;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s ease;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 15px 25px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #f1f1f1;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a i { margin-right: 10px; }
+    .sidebar a:hover { background-color: #333; }
+    .sidebar .closebtn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <!-- Hamburger Icon moved inside container and position changed -->
     <div style="position: relative; top: 20px; left: 20px; z-index: 1000;">
       <i class="fas fa-bars" id="menuBtn" style="font-size: 28px; color: white; cursor: pointer;"></i>
     </div>
 
     <div class="header-row">
-      <!-- Logo & Title -->
       <div class="title-section">
         <img src="logo.jpg" alt="Logo">
         <h1>
@@ -276,19 +268,16 @@
         </h1>
       </div>
 
-      <!-- Quote Box -->
       <div class="quote-box" id="quote-box">
-        "The mountain you fear to climb is often hiding the sunrise you’ve been waiting for."
+        <span id="quote-text">"Loading quote..."</span>
       </div>
     </div>
 
+    <div class="section-heading" style="color: white;">
+      <h4><center><strong>Need a Boost? We’ve Got the Spark.</strong></center></h4>
+      <hr>
+    </div>
 
-<div class="section-heading" style="color: white;">
-  <h4><center><strong>Need a Boost? We’ve Got the Spark.</strong></center></h4>
-  <hr>
-</div>
-
-    <!-- New Section: Read these Books -->
     <div class="section-heading" style="margin-top: 60px; color: #ffcc00;">
       Read these Books
     </div>
@@ -297,49 +286,24 @@
       <span>Reading Makes You Perfect</span>
     </a>
 
-    <!-- New Section: Read our articles -->
     <div class="section-heading" style="margin-top: 60px; color: #ffcc00;">
       Read our articles
     </div>
 
-    <!-- Navigation Boxes -->
     <div class="nav-section">
-	  <a href="article11.html" class="nav-box" style="background-image: url('art.jpg');">
-        <div class="nav-text">The Art of Staying Consistent.</div>
-	  </a>
-	  <a href="article10.html" class="nav-box" style="background-image: url('power.jpg');">
-        <div class="nav-text">Power of Consistency Over Motivation.</div>
-	  </a>
-	  <a href="article9.html" class="nav-box" style="background-image: url('chasing.jpg');">
-        <div class="nav-text">Chasing Dreams in a World Full of Distractions.</div>
-	  </a>
-	  <a href="article8.html" class="nav-box" style="background-image: url('turn.jpg');">
-        <div class="nav-text">Turning Failures into Fuel for Success.</div>
-	  </a>
-	  <a href="article7.html" class="nav-box" style="background-image: url('comfort.jpg');">
-        <div class="nav-text">Comfort Zones are Dream Killers.</div>
-	  </a>
-      <a href="article6.html" class="nav-box" style="background-image: url('focus.jpg');">
-        <div class="nav-text">You get what you Focus on.</div>
-	  </a>
-      <a href="article1.html" class="nav-box" style="background-image: url('plan.jpg');">
-        <div class="nav-text">Plane the Work, Work the Plan</div>
-      </a>
-      <a href="article2.html" class="nav-box" style="background-image: url('practice.jpg');">
-        <div class="nav-text">Practice makes Perfection</div>
-      </a>
-      <a href="article3.html" class="nav-box" style="background-image: url('Nopain.jpg');">
-        <div class="nav-text">No Pain, No Gain.</div>
-      </a>
-      <a href="article4.html" class="nav-box" style="background-image: url('Success.jpg');">
-        <div class="nav-text">Success is not an Accident.</div>
-      </a>
-      <a href="article5.html" class="nav-box" style="background-image: url('Stay.jpg');">
-        <div class="nav-text">Stay Hungry, Stay Foolish.</div>
-      </a>
+      <a href="article11.html" class="nav-box" style="background-image: url('art.jpg');"><div class="nav-text">The Art of Staying Consistent.</div></a>
+      <a href="article10.html" class="nav-box" style="background-image: url('power.jpg');"><div class="nav-text">Power of Consistency Over Motivation.</div></a>
+      <a href="article9.html" class="nav-box" style="background-image: url('chasing.jpg');"><div class="nav-text">Chasing Dreams in a World Full of Distractions.</div></a>
+      <a href="article8.html" class="nav-box" style="background-image: url('turn.jpg');"><div class="nav-text">Turning Failures into Fuel for Success.</div></a>
+      <a href="article7.html" class="nav-box" style="background-image: url('comfort.jpg');"><div class="nav-text">Comfort Zones are Dream Killers.</div></a>
+      <a href="article6.html" class="nav-box" style="background-image: url('focus.jpg');"><div class="nav-text">You get what you Focus on.</div></a>
+      <a href="article1.html" class="nav-box" style="background-image: url('plan.jpg');"><div class="nav-text">Plane the Work, Work the Plan</div></a>
+      <a href="article2.html" class="nav-box" style="background-image: url('practice.jpg');"><div class="nav-text">Practice makes Perfection</div></a>
+      <a href="article3.html" class="nav-box" style="background-image: url('Nopain.jpg');"><div class="nav-text">No Pain, No Gain.</div></a>
+      <a href="article4.html" class="nav-box" style="background-image: url('Success.jpg');"><div class="nav-text">Success is not an Accident.</div></a>
+      <a href="article5.html" class="nav-box" style="background-image: url('Stay.jpg');"><div class="nav-text">Stay Hungry, Stay Foolish.</div></a>
     </div>
 
-    <!-- Footer -->
     <footer>
       © 2025 Daily Sparkup. All rights reserved.
     </footer>
@@ -348,118 +312,70 @@
   <!-- Quote Script -->
   <script>
     const quotes = [
-"The mountain you fear to climb is often hiding the sunrise you’ve been waiting for."
-"Discipline is the bridge that takes dreams on foot to realities on wheels."
-"Your future self is silently watching every choice you make today."
-"The weight you carry is shaping the strength you’ll need tomorrow."
-"Comfort zones are like glass cages — you can see freedom, but you can’t touch it until you break it."
-"Every excuse today is a debt your future will have to pay."
-"Don’t wait for inspiration — create it with the first step."
-"Failure is not a wall; it’s a mirror showing you where to adjust."
-"The smallest daily wins are bricks that build the tallest empires."
-"If the road feels heavy, it means you’re carrying treasure worth protecting."
-"Dreams whisper, but discipline shouts — listen carefully."
-"The grind is never pretty, but the results are always beautiful."
-"Your fear of starting is bigger than the storm itself."
-"When passion gets tired, let consistency take the lead."
-"Every champion was once a beginner who refused to stay one."
-"Your scars are not signs of weakness, they’re proof of survival."
-"Time won’t stop for you — but it will reward those who keep moving."
-"Excuses shrink in the presence of action."
-"Greatness is never found in the easy choices."
-"Don’t just chase success — become someone success is drawn to."
+      "The mountain you fear to climb is often hiding the sunrise you’ve been waiting for.",
+      "Discipline is the bridge that takes dreams on foot to realities on wheels.",
+      "Your future self is silently watching every choice you make today.",
+      "The weight you carry is shaping the strength you’ll need tomorrow.",
+      "Comfort zones are like glass cages — you can see freedom, but you can’t touch it until you break it.",
+      "Every excuse today is a debt your future will have to pay.",
+      "Don’t wait for inspiration — create it with the first step.",
+      "Failure is not a wall; it’s a mirror showing you where to adjust.",
+      "The smallest daily wins are bricks that build the tallest empires.",
+      "If the road feels heavy, it means you’re carrying treasure worth protecting.",
+      "Dreams whisper, but discipline shouts — listen carefully.",
+      "The grind is never pretty, but the results are always beautiful.",
+      "Your fear of starting is bigger than the storm itself.",
+      "When passion gets tired, let consistency take the lead.",
+      "Every champion was once a beginner who refused to stay one.",
+      "Your scars are not signs of weakness, they’re proof of survival.",
+      "Time won’t stop for you — but it will reward those who keep moving.",
+      "Excuses shrink in the presence of action.",
+      "Greatness is never found in the easy choices.",
+      "Don’t just chase success — become someone success is drawn to."
     ];
 
     let index = 0;
-    const quoteBox = document.getElementById('quote-box');
+    const quoteText = document.getElementById('quote-text');
 
+    function showQuote() {
+      quoteText.style.opacity = 0;
+      setTimeout(() => {
+        quoteText.textContent = `"${quotes[index]}"`;
+        quoteText.style.opacity = 1;
+      }, 600);
+    }
+
+    showQuote();
     setInterval(() => {
       index = (index + 1) % quotes.length;
-      quoteBox.textContent = `"${quotes[index]}"`;
+      showQuote();
     }, 10000);
   </script>
-  <!-- Font Awesome Icons -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/>
 
-<!-- Sidebar -->
-<div id="sidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
-  <a href="/bookpage.html"><i class="fas fa-book-open"></i> Books </a>
-  <a href="/about.html"><i class="fas fa-user"></i> About Us</a>
-  <a href="/contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
-  <a href="/terms.html"><i class="fas fa-file-contract"></i> Terms & Conditions</a>
-  <a href="/policy.html"><i class="fas fa-user-shield"></i> Privacy Policy</a>
-  <a href="/sitemap.html"><i class="fas fa-sitemap"></i> Sitemap</a>
-</div>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-<!-- Styles -->
-<style>
-  .sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1100; /* updated z-index */
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.3s ease;
-    padding-top: 60px;
-  }
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+    <a href="/bookpage.html"><i class="fas fa-book-open"></i> Books </a>
+    <a href="/about.html"><i class="fas fa-user"></i> About Us</a>
+    <a href="/contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+    <a href="/terms.html"><i class="fas fa-file-contract"></i> Terms & Conditions</a>
+    <a href="/policy.html"><i class="fas fa-user-shield"></i> Privacy Policy</a>
+    <a href="/sitemap.html"><i class="fas fa-sitemap"></i> Sitemap</a>
+  </div>
 
-  .sidebar a {
-    padding: 15px 25px;
-    text-decoration: none;
-    font-size: 18px;
-    color: #f1f1f1;
-    display: block;
-    transition: 0.3s;
-  }
+  <script>
+    const sidebar = document.getElementById("sidebar");
+    const menuBtn = document.getElementById("menuBtn");
 
-  .sidebar a i {
-    margin-right: 10px;
-  }
+    menuBtn.onclick = () => { sidebar.style.width = "33.3%"; };
+    function closeSidebar() { sidebar.style.width = "0"; }
+  </script>
 
-  .sidebar a:hover {
-    background-color: #333;
-  }
-
-  .sidebar .closebtn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-  }
-</style>
-
-<!-- Script -->
-<script>
-  const sidebar = document.getElementById("sidebar");
-  const menuBtn = document.getElementById("menuBtn");
-
-  menuBtn.onclick = () => {
-    sidebar.style.width = "33.3%";
-  };
-
-  function closeSidebar() {
-    sidebar.style.width = "0";
-  }
-</script>
-<script type='text/javascript' src='//pl27368150.profitableratecpm.com/b8/2c/1e/b82c1e67f2a1f036374cab3cd222b1e1.js'></script>
-<script async="async" data-cfasync="false" src="//pl27371629.profitableratecpm.com/5391be29041463888b6f8d3cc1ca4fe3/invoke.js"></script>
+  <script type='text/javascript' src='//pl27368150.profitableratecpm.com/b8/2c/1e/b82c1e67f2a1f036374cab3cd222b1e1.js'></script>
+  <script async="async" data-cfasync="false" src="//pl27371629.profitableratecpm.com/5391be29041463888b6f8d3cc1ca4fe3/invoke.js"></script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
