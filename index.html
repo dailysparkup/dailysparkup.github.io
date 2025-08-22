@@ -250,14 +250,32 @@
       color: white;
       cursor: pointer;
     }
+
+    /* Hamburger Button */
+    #menuBtn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 2000;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      #menuBtn {
+        top: 10px;   /* move higher */
+        left: 10px;  /* move further left */
+        font-size: 24px; /* smaller */
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <div style="position: relative; top: 20px; left: 20px; z-index: 1000;">
-      <i class="fas fa-bars" id="menuBtn" style="font-size: 28px; color: white; cursor: pointer;"></i>
-    </div>
+    <!-- Hamburger button -->
+    <i class="fas fa-bars" id="menuBtn"></i>
 
     <div class="header-row">
       <div class="title-section">
