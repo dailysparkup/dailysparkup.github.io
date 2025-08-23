@@ -13,42 +13,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
   <style>
-    /* ===== BODY & BACKGROUND ===== */
     body {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, sans-serif;
       color: #fff;
-      overflow-x: hidden;
-      opacity: 0;              /* Start hidden */
-      transition: opacity 1s ease-in;
-      position: relative;
-    }
-    #bg-wrapper {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url('https://images.unsplash.com/photo-1522844505858-6cdc0201bcd9?q=80&w=1470&auto=format&fit=crop') no-repeat center center;
+      background: url('https://images.unsplash.com/photo-1522844505858-6cdc0201bcd9?q=80&w=1470&auto=format&fit=crop') no-repeat center center fixed;
       background-size: cover;
-      z-index: -2;
+      position: relative;
+      overflow-x: hidden;
     }
-    #bg-overlay {
+    body::before {
+      content: '';
       position: fixed;
       top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
+      height: 100%; width: 100%;
+      background: rgba(0, 0, 0, 0.7);
       z-index: -1;
     }
-
-    /* ===== CONTAINER & HEADER ===== */
     .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
     .header-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; }
     .title-section { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
     .title-section img { height: 140px; width: 140px; border-radius: 50%; object-fit: cover; }
     .title-section h1 { font-size: 2.8rem; margin: 0; line-height: 1.2; text-align: left; }
     .title-section h1 span { display: block; }
-
-    /* ===== QUOTE BOX ===== */
     .quote-box {
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
@@ -66,10 +54,11 @@
       text-align: center;
       animation: glow 2.5s infinite alternate;
     }
-    @keyframes glow { 0% { box-shadow: 0 0 40px rgba(192,192,192,0.5); } 100% { box-shadow: 0 0 60px rgba(220,220,220,1); } }
+    @keyframes glow {
+      0% { box-shadow: 0 0 40px rgba(192,192,192,0.5); }
+      100% { box-shadow: 0 0 60px rgba(220,220,220,1); }
+    }
     #quote-text { transition: opacity 0.6s ease-in-out; display: inline-block; }
-
-    /* ===== NAV & BOXES ===== */
     .nav-section { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 60px; }
     .nav-box {
       width: 250px; height: 250px;
@@ -89,11 +78,7 @@
     }
     .nav-box:hover::before { background: linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0.05)); }
     .nav-text { position: absolute; bottom: 20px; left: 20px; font-size: 1.4rem; font-weight: bold; z-index: 2; }
-
-    /* ===== SECTION HEADINGS ===== */
     .section-heading { color: #ffcc00; font-size: 2rem; font-weight: bold; margin: 40px 0 20px 0; text-align: center; }
-
-    /* ===== BOOK BOX ===== */
     .book-nav-box {
       width: 750px; height: 250px;
       border: 6px solid #ffcc00; border-radius: 15px; position: relative; overflow: hidden;
@@ -109,21 +94,6 @@
     }
     .book-nav-box:hover { box-shadow: 0 12px 40px rgba(255,204,0,1); }
     .book-nav-box span { position: relative; z-index: 2; }
-
-    /* ===== FOOTER ===== */
-    footer { text-align: center; color: #ccc; font-size: 0.9rem; margin-top: 60px; }
-
-    /* ===== SIDEBAR ===== */
-    .sidebar { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0; background-color: #111; overflow-x: hidden; transition: 0.3s ease; padding-top: 60px; }
-    .sidebar a { padding: 15px 25px; text-decoration: none; font-size: 18px; color: #f1f1f1; display: block; transition: 0.3s; }
-    .sidebar a i { margin-right: 10px; }
-    .sidebar a:hover { background-color: #333; }
-    .sidebar .closebtn { position: absolute; top: 15px; right: 20px; font-size: 30px; color: white; cursor: pointer; }
-
-    #menuBtn { position: fixed; top: 20px; left: 20px; z-index: 1000; font-size: 28px; color: white; cursor: pointer; }
-    @media (max-width: 768px) { #menuBtn { top: 10px; left: 10px; font-size: 24px; } }
-
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 991px) { .book-nav-box { width: 100%; } }
     @media (max-width: 768px) {
       .header-row { flex-direction: column; align-items: center; text-align: center; }
@@ -131,117 +101,143 @@
       .nav-section { flex-direction: column; align-items: center; }
       .nav-box { width: 100%; max-width: 300px; margin-bottom: 30px; }
     }
+    footer { text-align: center; color: #ccc; font-size: 0.9rem; margin-top: 60px; }
+    .sidebar { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0; background-color: #111; overflow-x: hidden; transition: 0.3s ease; padding-top: 60px; }
+    .sidebar a { padding: 15px 25px; text-decoration: none; font-size: 18px; color: #f1f1f1; display: block; transition: 0.3s; }
+    .sidebar a i { margin-right: 10px; }
+    .sidebar a:hover { background-color: #333; }
+    .sidebar .closebtn { position: absolute; top: 15px; right: 20px; font-size: 30px; color: white; cursor: pointer; }
+    #menuBtn { position: fixed; top: 20px; left: 20px; z-index: 1000; font-size: 28px; color: white; cursor: pointer; }
+    @media (max-width: 768px) { #menuBtn { top: 10px; left: 10px; font-size: 24px; } }
   </style>
 </head>
 <body>
 
-  <!-- Background layers -->
-  <div id="bg-wrapper"></div>
-  <div id="bg-overlay"></div>
+<!-- PRELOADER -->
+<div id="preloader" style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+">
+  <!-- Replace 'logo.jpg' with your logo -->
+  <img src="logo.jpg" alt="Logo" style="width:120px; height:120px; object-fit:contain;">
+</div>
 
-  <div class="container">
-    <i class="fas fa-bars" id="menuBtn"></i>
+<div class="container">
+  <i class="fas fa-bars" id="menuBtn"></i>
 
-    <div class="header-row">
-      <div class="title-section">
-        <img src="logo.jpg" alt="Logo">
-        <h1><span>Daily</span><span>Sparkup</span></h1>
-      </div>
-
-      <div class="quote-box" id="quote-box">
-        <span id="quote-text">"Loading quote..."</span>
-      </div>
+  <div class="header-row">
+    <div class="title-section">
+      <img src="logo.jpg" alt="Logo">
+      <h1><span>Daily</span><span>Sparkup</span></h1>
     </div>
 
-    <div class="section-heading" style="color: white;">
-      <h4><center><strong>Need a Boost? We’ve Got the Spark.</strong></center></h4>
-      <hr>
+    <div class="quote-box" id="quote-box">
+      <span id="quote-text">"Loading quote..."</span>
     </div>
-
-    <div class="section-heading" style="margin-top: 60px; color: #ffcc00;">Read these Books</div>
-    <a href="bookpage.html" class="book-nav-box" style="background-image: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80');" target="_blank" rel="noopener noreferrer">
-      <span>Reading Makes You Perfect</span>
-    </a>
-
-    <div class="section-heading" style="margin-top: 60px; color: #ffcc00;">Read our articles</div>
-    <div class="nav-section">
-      <a href="article13.html" class="nav-box" style="background-image: url('morning.jpg');"><div class="nav-text">Morning Routines of High Performers.</div></a>
-      <a href="article12.html" class="nav-box" style="background-image: url('smallhabit.jpg');"><div class="nav-text">Small Habits, Big Results.</div></a>
-      <a href="article11.html" class="nav-box" style="background-image: url('art.jpg');"><div class="nav-text">The Art of Staying Consistent.</div></a>
-      <a href="article10.html" class="nav-box" style="background-image: url('power.jpg');"><div class="nav-text">Power of Consistency Over Motivation.</div></a>
-      <a href="article9.html" class="nav-box" style="background-image: url('chasing.jpg');"><div class="nav-text">Chasing Dreams in a World Full of Distractions.</div></a>
-      <a href="article8.html" class="nav-box" style="background-image: url('turn.jpg');"><div class="nav-text">Turning Failures into Fuel for Success.</div></a>
-      <a href="article7.html" class="nav-box" style="background-image: url('comfort.jpg');"><div class="nav-text">Comfort Zones are Dream Killers.</div></a>
-      <a href="article6.html" class="nav-box" style="background-image: url('focus.jpg');"><div class="nav-text">You get what you Focus on.</div></a>
-      <a href="article1.html" class="nav-box" style="background-image: url('plan.jpg');"><div class="nav-text">Plane the Work, Work the Plan</div></a>
-      <a href="article2.html" class="nav-box" style="background-image: url('practice.jpg');"><div class="nav-text">Practice makes Perfection</div></a>
-      <a href="article3.html" class="nav-box" style="background-image: url('Nopain.jpg');"><div class="nav-text">No Pain, No Gain.</div></a>
-      <a href="article4.html" class="nav-box" style="background-image: url('Success.jpg');"><div class="nav-text">Success is not an Accident.</div></a>
-      <a href="article5.html" class="nav-box" style="background-image: url('Stay.jpg');"><div class="nav-text">Stay Hungry, Stay Foolish.</div></a>
-    </div>
-
-    <footer>© 2025 Daily Sparkup. All rights reserved.</footer>
   </div>
 
-  <!-- Quote Script -->
-  <script>
-    const quotes = [
-      "The mountain you fear to climb is often hiding the sunrise you’ve been waiting for.",
-      "Discipline is the bridge that takes dreams on foot to realities on wheels.",
-      "Your future self is silently watching every choice you make today.",
-      "The weight you carry is shaping the strength you’ll need tomorrow.",
-      "Comfort zones are like glass cages — you can see freedom, but you can’t touch it until you break it.",
-      "Every excuse today is a debt your future will have to pay.",
-      "Don’t wait for inspiration — create it with the first step.",
-      "Failure is not a wall; it’s a mirror showing you where to adjust.",
-      "The smallest daily wins are bricks that build the tallest empires.",
-      "If the road feels heavy, it means you’re carrying treasure worth protecting.",
-      "Dreams whisper, but discipline shouts — listen carefully.",
-      "The grind is never pretty, but the results are always beautiful.",
-      "Your fear of starting is bigger than the storm itself.",
-      "When passion gets tired, let consistency take the lead.",
-      "Every champion was once a beginner who refused to stay one.",
-      "Your scars are not signs of weakness, they’re proof of survival.",
-      "Time won’t stop for you — but it will reward those who keep moving.",
-      "Excuses shrink in the presence of action.",
-      "Greatness is never found in the easy choices.",
-      "Don’t just chase success — become someone success is drawn to."
-    ];
-    let index = 0;
-    const quoteText = document.getElementById('quote-text');
-    function showQuote() {
-      quoteText.style.opacity = 0;
-      setTimeout(() => { quoteText.textContent = `"${quotes[index]}"`; quoteText.style.opacity = 1; }, 600);
-    }
-    showQuote();
-    setInterval(() => { index = (index + 1) % quotes.length; showQuote(); }, 10000);
-
-    // ===== FADE IN BODY AFTER BG LOAD =====
-    const bgImg = new Image();
-    bgImg.src = 'https://images.unsplash.com/photo-1522844505858-6cdc0201bcd9?q=80&w=1470&auto=format&fit=crop';
-    bgImg.onload = () => { document.body.style.opacity = 1; };
-  </script>
-
-  <!-- Sidebar -->
-  <div id="sidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
-    <a href="/bookpage.html"><i class="fas fa-book-open"></i> Books </a>
-    <a href="/about.html"><i class="fas fa-user"></i> About Us</a>
-    <a href="/contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
-    <a href="/terms.html"><i class="fas fa-file-contract"></i> Terms & Conditions</a>
-    <a href="/policy.html"><i class="fas fa-user-shield"></i> Privacy Policy</a>
-    <a href="/sitemap.html"><i class="fas fa-sitemap"></i> Sitemap</a>
+  <div class="section-heading" style="color: white;">
+    <h4><center><strong>Need a Boost? We’ve Got the Spark.</strong></center></h4>
+    <hr>
   </div>
 
-  <script>
-    const sidebar = document.getElementById("sidebar");
-    const menuBtn = document.getElementById("menuBtn");
-    menuBtn.onclick = () => { sidebar.style.width = window.innerWidth <= 768 ? "75%" : "250px"; };
-    function closeSidebar() { sidebar.style.width = "0"; }
-  </script>
+  <div class="section-heading" style="margin-top: 60px; color: #ffcc00;">Read these Books</div>
+  <a href="bookpage.html" class="book-nav-box" style="background-image: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80');" target="_blank" rel="noopener noreferrer">
+    <span>Reading Makes You Perfect</span>
+  </a>
 
-  <!-- Adsterra Social Bar -->
-  <script type="text/javascript" src="//www.adsterra.com/social-bar.js" async></script>
+  <div class="section-heading" style="margin-top: 60px; color: #ffcc00;">Read our articles</div>
+  <div class="nav-section">
+    <a href="article13.html" class="nav-box" style="background-image: url('morning.jpg');"><div class="nav-text">Morning Routines of High Performers.</div></a>
+    <a href="article12.html" class="nav-box" style="background-image: url('smallhabit.jpg');"><div class="nav-text">Small Habits, Big Results.</div></a>
+    <a href="article11.html" class="nav-box" style="background-image: url('art.jpg');"><div class="nav-text">The Art of Staying Consistent.</div></a>
+    <a href="article10.html" class="nav-box" style="background-image: url('power.jpg');"><div class="nav-text">Power of Consistency Over Motivation.</div></a>
+    <a href="article9.html" class="nav-box" style="background-image: url('chasing.jpg');"><div class="nav-text">Chasing Dreams in a World Full of Distractions.</div></a>
+    <a href="article8.html" class="nav-box" style="background-image: url('turn.jpg');"><div class="nav-text">Turning Failures into Fuel for Success.</div></a>
+    <a href="article7.html" class="nav-box" style="background-image: url('comfort.jpg');"><div class="nav-text">Comfort Zones are Dream Killers.</div></a>
+    <a href="article6.html" class="nav-box" style="background-image: url('focus.jpg');"><div class="nav-text">You get what you Focus on.</div></a>
+    <a href="article1.html" class="nav-box" style="background-image: url('plan.jpg');"><div class="nav-text">Plane the Work, Work the Plan</div></a>
+    <a href="article2.html" class="nav-box" style="background-image: url('practice.jpg');"><div class="nav-text">Practice makes Perfection</div></a>
+    <a href="article3.html" class="nav-box" style="background-image: url('Nopain.jpg');"><div class="nav-text">No Pain, No Gain.</div></a>
+    <a href="article4.html" class="nav-box" style="background-image: url('Success.jpg');"><div class="nav-text">Success is not an Accident.</div></a>
+    <a href="article5.html" class="nav-box" style="background-image: url('Stay.jpg');"><div class="nav-text">Stay Hungry, Stay Foolish.</div></a>
+  </div>
+
+  <footer>© 2025 Daily Sparkup. All rights reserved.</footer>
+</div>
+
+<!-- Quote Script -->
+<script>
+  const quotes = [
+    "The mountain you fear to climb is often hiding the sunrise you’ve been waiting for.",
+    "Discipline is the bridge that takes dreams on foot to realities on wheels.",
+    "Your future self is silently watching every choice you make today.",
+    "The weight you carry is shaping the strength you’ll need tomorrow.",
+    "Comfort zones are like glass cages — you can see freedom, but you can’t touch it until you break it.",
+    "Every excuse today is a debt your future will have to pay.",
+    "Don’t wait for inspiration — create it with the first step.",
+    "Failure is not a wall; it’s a mirror showing you where to adjust.",
+    "The smallest daily wins are bricks that build the tallest empires.",
+    "If the road feels heavy, it means you’re carrying treasure worth protecting.",
+    "Dreams whisper, but discipline shouts — listen carefully.",
+    "The grind is never pretty, but the results are always beautiful.",
+    "Your fear of starting is bigger than the storm itself.",
+    "When passion gets tired, let consistency take the lead.",
+    "Every champion was once a beginner who refused to stay one.",
+    "Your scars are not signs of weakness, they’re proof of survival.",
+    "Time won’t stop for you — but it will reward those who keep moving.",
+    "Excuses shrink in the presence of action.",
+    "Greatness is never found in the easy choices.",
+    "Don’t just chase success — become someone success is drawn to."
+  ];
+  let index = 0;
+  const quoteText = document.getElementById('quote-text');
+  function showQuote() {
+    quoteText.style.opacity = 0;
+    setTimeout(() => { quoteText.textContent = `"${quotes[index]}"`; quoteText.style.opacity = 1; }, 600);
+  }
+  showQuote();
+  setInterval(() => { index = (index + 1) % quotes.length; showQuote(); }, 10000);
+</script>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+  <a href="/bookpage.html"><i class="fas fa-book-open"></i> Books </a>
+  <a href="/about.html"><i class="fas fa-user"></i> About Us</a>
+  <a href="/contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+  <a href="/terms.html"><i class="fas fa-file-contract"></i> Terms & Conditions</a>
+  <a href="/policy.html"><i class="fas fa-user-shield"></i> Privacy Policy</a>
+  <a href="/sitemap.html"><i class="fas fa-sitemap"></i> Sitemap</a>
+</div>
+
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const menuBtn = document.getElementById("menuBtn");
+  menuBtn.onclick = () => { sidebar.style.width = window.innerWidth <= 768 ? "75%" : "250px"; };
+  function closeSidebar() { sidebar.style.width = "0"; }
+
+  // Remove preloader on load
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    setTimeout(() => {         // <-- Delay before fade
+        preloader.style.opacity = 0;
+        setTimeout(() => preloader.style.display = 'none', 500); // fade duration
+    }, 600); // <-- 600ms = 0.6 seconds
+});
+
+</script>
+
+<!-- Adsterra Social Bar (no banner ads) -->
+<script type="text/javascript" src="//www.profitabledisplaynetwork.com/socialbar/script.js"></script>
 
 </body>
 </html>
