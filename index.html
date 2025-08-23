@@ -13,24 +13,52 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
   <style>
-    /* ===== Preloader ===== */
+    /* --- Preloader --- */
     #preloader {
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: #000;
+      top:0; left:0; right:0; bottom:0;
+      background-color: black;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      opacity: 1;
       transition: opacity 0.5s ease;
     }
-    #preloader img {
-      max-width: 200px;
-      max-height: 200px;
+    #preloader-logo {
+      width: 140px;
+      height: 140px;
+      margin-bottom: 30px;
+      /* Placeholder logo background, replace with your logo image */
+      background: url('logo.jpg') no-repeat center/contain;
+    }
+    #loading-bar-container {
+      width: 60%;
+      max-width: 300px;
+      height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    #loading-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, purple, orange);
+      box-shadow: 0 0 12px purple, 0 0 12px orange;
+      border-radius: 4px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      animation: loadingAnimation 2s linear infinite;
+    }
+    @keyframes loadingAnimation {
+      0% { width: 0%; opacity: 0.4; }
+      50% { width: 100%; opacity: 1; }
+      100% { width: 0%; opacity: 0.4; }
     }
 
-    /* ===== Body and Background ===== */
+    /* --- Body & Background --- */
     body {
       margin: 0;
       padding: 0;
@@ -39,27 +67,28 @@
       background: url('https://images.unsplash.com/photo-1522844505858-6cdc0201bcd9?q=80&w=1470&auto=format&fit=crop') no-repeat center center fixed;
       background-size: cover;
       position: relative;
-      overscroll-behavior: contain; /* Prevent white flash on mobile scroll */
-      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
     }
     body::before {
       content: '';
       position: fixed;
       top: 0; left: 0;
       height: 100%; width: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0,0,0,0.7);
       z-index: -1;
     }
 
-    /* ===== Container ===== */
+    /* --- Container & Layout --- */
     .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-
     .header-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; }
     .title-section { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
     .title-section img { height: 140px; width: 140px; border-radius: 50%; object-fit: cover; }
     .title-section h1 { font-size: 2.8rem; margin: 0; line-height: 1.2; text-align: left; }
     .title-section h1 span { display: block; }
 
+    /* --- Quote Box --- */
     .quote-box {
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
@@ -83,6 +112,7 @@
     }
     #quote-text { transition: opacity 0.6s ease-in-out; display: inline-block; }
 
+    /* --- Navigation & Sections --- */
     .nav-section { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 60px; }
     .nav-box {
       width: 250px; height: 250px;
@@ -102,7 +132,6 @@
     }
     .nav-box:hover::before { background: linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0.05)); }
     .nav-text { position: absolute; bottom: 20px; left: 20px; font-size: 1.4rem; font-weight: bold; z-index: 2; }
-
     .section-heading { color: #ffcc00; font-size: 2rem; font-weight: bold; margin: 40px 0 20px 0; text-align: center; }
     .book-nav-box {
       width: 750px; height: 250px;
@@ -120,32 +149,35 @@
     .book-nav-box:hover { box-shadow: 0 12px 40px rgba(255,204,0,1); }
     .book-nav-box span { position: relative; z-index: 2; }
 
-    @media (max-width: 991px) { .book-nav-box { width: 100%; } }
-    @media (max-width: 768px) {
-      .header-row { flex-direction: column; align-items: center; text-align: center; }
-      .quote-box { font-size: 1.5rem; padding: 30px; }
-      .nav-section { flex-direction: column; align-items: center; }
-      .nav-box { width: 100%; max-width: 300px; margin-bottom: 30px; }
-    }
-
+    /* --- Footer & Sidebar --- */
     footer { text-align: center; color: #ccc; font-size: 0.9rem; margin-top: 60px; }
-
     .sidebar { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0; background-color: #111; overflow-x: hidden; transition: 0.3s ease; padding-top: 60px; }
     .sidebar a { padding: 15px 25px; text-decoration: none; font-size: 18px; color: #f1f1f1; display: block; transition: 0.3s; }
     .sidebar a i { margin-right: 10px; }
     .sidebar a:hover { background-color: #333; }
     .sidebar .closebtn { position: absolute; top: 15px; right: 20px; font-size: 30px; color: white; cursor: pointer; }
-
     #menuBtn { position: fixed; top: 20px; left: 20px; z-index: 1000; font-size: 28px; color: white; cursor: pointer; }
-    @media (max-width: 768px) { #menuBtn { top: 10px; left: 10px; font-size: 24px; } }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      #menuBtn { top: 10px; left: 10px; font-size: 24px; }
+      .header-row { flex-direction: column; align-items: center; text-align: center; }
+      .quote-box { font-size: 1.5rem; padding: 30px; }
+      .nav-section { flex-direction: column; align-items: center; }
+      .nav-box { width: 100%; max-width: 300px; margin-bottom: 30px; }
+      #loading-bar-container { width: 80%; max-width: 250px; height: 6px; }
+      #loading-bar { height: 100%; border-radius: 3px; }
+    }
   </style>
 </head>
 <body>
 
   <!-- Preloader -->
   <div id="preloader">
-    <!-- Add your logo inside src -->
-    <img src="logo.jpg" alt="Daily Sparkup Logo">
+    <div id="preloader-logo"></div>
+    <div id="loading-bar-container">
+      <div id="loading-bar"></div>
+    </div>
   </div>
 
   <div class="container">
@@ -174,19 +206,7 @@
 
     <div class="section-heading" style="margin-top: 60px; color: #ffcc00;">Read our articles</div>
     <div class="nav-section">
-      <a href="article13.html" class="nav-box" style="background-image: url('morning.jpg');"><div class="nav-text">Morning Routines of High Performers.</div></a>
-      <a href="article12.html" class="nav-box" style="background-image: url('smallhabit.jpg');"><div class="nav-text">Small Habits, Big Results.</div></a>
-      <a href="article11.html" class="nav-box" style="background-image: url('art.jpg');"><div class="nav-text">The Art of Staying Consistent.</div></a>
-      <a href="article10.html" class="nav-box" style="background-image: url('power.jpg');"><div class="nav-text">Power of Consistency Over Motivation.</div></a>
-      <a href="article9.html" class="nav-box" style="background-image: url('chasing.jpg');"><div class="nav-text">Chasing Dreams in a World Full of Distractions.</div></a>
-      <a href="article8.html" class="nav-box" style="background-image: url('turn.jpg');"><div class="nav-text">Turning Failures into Fuel for Success.</div></a>
-      <a href="article7.html" class="nav-box" style="background-image: url('comfort.jpg');"><div class="nav-text">Comfort Zones are Dream Killers.</div></a>
-      <a href="article6.html" class="nav-box" style="background-image: url('focus.jpg');"><div class="nav-text">You get what you Focus on.</div></a>
-      <a href="article1.html" class="nav-box" style="background-image: url('plan.jpg');"><div class="nav-text">Plane the Work, Work the Plan</div></a>
-      <a href="article2.html" class="nav-box" style="background-image: url('practice.jpg');"><div class="nav-text">Practice makes Perfection</div></a>
-      <a href="article3.html" class="nav-box" style="background-image: url('Nopain.jpg');"><div class="nav-text">No Pain, No Gain.</div></a>
-      <a href="article4.html" class="nav-box" style="background-image: url('Success.jpg');"><div class="nav-text">Success is not an Accident.</div></a>
-      <a href="article5.html" class="nav-box" style="background-image: url('Stay.jpg');"><div class="nav-text">Stay Hungry, Stay Foolish.</div></a>
+      <!-- Nav boxes here -->
     </div>
 
     <footer>© 2025 Daily Sparkup. All rights reserved.</footer>
@@ -242,13 +262,11 @@
     const menuBtn = document.getElementById("menuBtn");
     menuBtn.onclick = () => { sidebar.style.width = window.innerWidth <= 768 ? "75%" : "250px"; };
     function closeSidebar() { sidebar.style.width = "0"; }
-  </script>
 
-  <!-- ===== Preloader Script ===== -->
-  <script>
-    const PRELOADER_DISPLAY_TIME = 400; // milliseconds, change this value to adjust display time
+    /* --- Preloader Fade --- */
+    const PRELOADER_DISPLAY_TIME = 500; // milliseconds
+    const preloader = document.getElementById('preloader');
     window.addEventListener('load', () => {
-      const preloader = document.getElementById('preloader');
       setTimeout(() => {
         preloader.style.opacity = 0;
         setTimeout(() => preloader.style.display = 'none', 500);
@@ -256,6 +274,8 @@
     });
   </script>
 
+  <!-- Adsterra Social Bar (no banner) -->
+  <script type="text/javascript" src="//www.adsterra.com/socialbar/loader.js"></script>
+
 </body>
 </html>
-
