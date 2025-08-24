@@ -268,13 +268,14 @@
     showQuote();
     setInterval(() => { index = (index + 1) % quotes.length; showQuote(); }, 10000);
 
-    // ===== FADE OUT PRELOADER =====
-    window.addEventListener('load', () => {
+    // ===== CONSTANT-TIME PRELOADER =====
+    const MIN_PRELOADER_TIME = 500; // 0.5s
+    const preloader = document.getElementById('preloader');
+    document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
-        const preloader = document.getElementById('preloader');
         preloader.classList.add('hidden');
-        document.body.style.overflow = 'auto'; // enable scroll again
-      }, 500); // fast fade, only 0.5s
+        document.body.style.overflow = 'auto';
+      }, MIN_PRELOADER_TIME);
     });
   </script>
 
