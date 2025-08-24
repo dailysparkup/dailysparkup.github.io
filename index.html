@@ -37,6 +37,8 @@
       z-index: -2;
       transform: translateZ(0);
       will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     #bg-overlay {
@@ -46,6 +48,10 @@
       height: 100%;
       background: rgba(0,0,0,0.7);
       z-index: -1;
+      transform: translateZ(0);
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     /* ===== PRELOADER ===== */
@@ -73,7 +79,6 @@
       background: url('logo.jpg') no-repeat center/contain;
     }
 
-    /* Fast loader */
     .loader {
       width: 40px;
       height: 40px;
@@ -93,7 +98,6 @@
     .title-section h1 { font-size: 2.8rem; margin: 0; line-height: 1.2; text-align: left; }
     .title-section h1 span { display: block; }
 
-    /* ===== QUOTE BOX ===== */
     .quote-box {
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
@@ -111,6 +115,7 @@
       text-align: center;
       animation: glow 2.5s infinite alternate;
     }
+
     @keyframes glow { 0% { box-shadow: 0 0 40px rgba(192,192,192,0.5); } 100% { box-shadow: 0 0 60px rgba(220,220,220,1); } }
     #quote-text { transition: opacity 0.6s ease-in-out; display: inline-block; }
 
@@ -135,10 +140,8 @@
     .nav-box:hover::before { background: linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0.05)); }
     .nav-text { position: absolute; bottom: 20px; left: 20px; font-size: 1.4rem; font-weight: bold; z-index: 2; }
 
-    /* ===== SECTION HEADINGS ===== */
     .section-heading { color: #ffcc00; font-size: 2rem; font-weight: bold; margin: 40px 0 20px 0; text-align: center; }
 
-    /* ===== BOOK BOX ===== */
     .book-nav-box {
       width: 750px; height: 250px;
       border: 6px solid #ffcc00; border-radius: 15px; position: relative; overflow: hidden;
@@ -155,10 +158,8 @@
     .book-nav-box:hover { box-shadow: 0 12px 40px rgba(255,204,0,1); }
     .book-nav-box span { position: relative; z-index: 2; }
 
-    /* ===== FOOTER ===== */
     footer { text-align: center; color: #ccc; font-size: 0.9rem; margin-top: 60px; }
 
-    /* ===== SIDEBAR ===== */
     .sidebar { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0; background-color: #111; overflow-x: hidden; transition: 0.3s ease; padding-top: 60px; }
     .sidebar a { padding: 15px 25px; text-decoration: none; font-size: 18px; color: #f1f1f1; display: block; transition: 0.3s; }
     .sidebar a i { margin-right: 10px; }
@@ -167,7 +168,6 @@
 
     #menuBtn { position: fixed; top: 20px; left: 20px; z-index: 1000; font-size: 28px; color: white; cursor: pointer; }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 991px) { .book-nav-box { width: 100%; } }
     @media (max-width: 768px) {
       .header-row { flex-direction: column; align-items: center; text-align: center; }
@@ -268,8 +268,7 @@
     showQuote();
     setInterval(() => { index = (index + 1) % quotes.length; showQuote(); }, 10000);
 
-    // ===== CONSTANT-TIME PRELOADER =====
-    const MIN_PRELOADER_TIME = 500; // 0.5s
+    const MIN_PRELOADER_TIME = 500;
     const preloader = document.getElementById('preloader');
     document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
@@ -277,6 +276,11 @@
         document.body.style.overflow = 'auto';
       }, MIN_PRELOADER_TIME);
     });
+
+    const sidebar = document.getElementById("sidebar");
+    const menuBtn = document.getElementById("menuBtn");
+    menuBtn.onclick = () => { sidebar.style.width = window.innerWidth <= 768 ? "75%" : "250px"; };
+    function closeSidebar() { sidebar.style.width = "0"; }
   </script>
 
   <!-- Sidebar -->
@@ -289,13 +293,6 @@
     <a href="/policy.html"><i class="fas fa-user-shield"></i> Privacy Policy</a>
     <a href="/sitemap.html"><i class="fas fa-sitemap"></i> Sitemap</a>
   </div>
-
-  <script>
-    const sidebar = document.getElementById("sidebar");
-    const menuBtn = document.getElementById("menuBtn");
-    menuBtn.onclick = () => { sidebar.style.width = window.innerWidth <= 768 ? "75%" : "250px"; };
-    function closeSidebar() { sidebar.style.width = "0"; }
-  </script>
 
   <!-- Adsterra Social Bar -->
   <script type="text/javascript" src="//www.adsterra.com/social-bar.js" async></script>
