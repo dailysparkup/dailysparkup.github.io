@@ -275,12 +275,15 @@
         preloader.classList.add('hidden');
         document.body.style.overflow = 'auto';
       }, MIN_PRELOADER_TIME);
-    });
 
-    const sidebar = document.getElementById("sidebar");
-    const menuBtn = document.getElementById("menuBtn");
-    menuBtn.onclick = () => { sidebar.style.width = window.innerWidth <= 768 ? "75%" : "250px"; };
-    function closeSidebar() { sidebar.style.width = "0"; }
+      // === Sidebar Fix ===
+      const sidebar = document.getElementById("sidebar");
+      const menuBtn = document.getElementById("menuBtn");
+      menuBtn.onclick = () => {
+        sidebar.style.width = window.innerWidth <= 768 ? "75%" : "250px";
+      };
+      window.closeSidebar = () => { sidebar.style.width = "0"; };
+    });
   </script>
 
   <!-- Sidebar -->
