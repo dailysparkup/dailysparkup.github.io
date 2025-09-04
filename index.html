@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -177,6 +176,43 @@
       .nav-box { width: 100%; max-width: 300px; margin-bottom: 30px; }
       #menuBtn { top: 10px; left: 10px; font-size: 24px; }
     }
+
+    /* ===== NEW: MICRO-ANIMATIONS (safe, progressive) ===== */
+
+    /* Float the logo smoothly */
+    @keyframes floatLogo {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    .float-logo { animation: floatLogo 4s ease-in-out infinite; will-change: transform; }
+
+    /* Gentle glow pulse on the title */
+    @keyframes pulseGlow {
+      0% { text-shadow: 0 0 8px #ffcc00, 0 0 16px #ffcc00; }
+      100% { text-shadow: 0 0 18px #ffd94a, 0 0 30px #ffcc00; }
+    }
+    .pulse-title { animation: pulseGlow 2s ease-in-out infinite alternate; }
+
+    /* Fade-up on tiles with progressive enhancement */
+    .fade-up {
+      opacity: 1;                 /* visible by default (no JS = no disappearance) */
+      transform: translateY(0);   /* baseline */
+      transition: opacity 800ms ease, transform 800ms ease;
+    }
+    .fade-up.hidden {              /* JS applies + removes this class */
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Respect users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -228,7 +264,7 @@
       <a href="article7.html" class="nav-box" style="background-image: url('https://images.unsplash.com/photo-1620043294258-516affdf84f5?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"><div class="nav-text">Comfort Zones are Dream Killers.</div></a>
       <a href="article6.html" class="nav-box" style="background-image: url('https://images.unsplash.com/photo-1629721671030-a83edbb11211?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHRhcmdldHxlbnwwfHwwfHx8MA%3D%3D');"><div class="nav-text">You get what you Focus on.</div></a>
       <a href="article1.html" class="nav-box" style="background-image: url('https://images.unsplash.com/photo-1499072935396-e7bacd37ce76?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"><div class="nav-text">Plane the Work, Work the Plan</div></a>
-      <a href="article2.html" class="nav-box" style="background-image: url('https://images.unsplash.com/photo-1564289640371-a908d653c7cf?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJhY3RpY2UlMjBtYWtlcyUyMHBlcmZlY3Rpb258ZW58MHx8MHx8fDA%3D');"><div class="nav-text">Practice makes Perfection</div></a>
+      <a href="article2.html" class="nav-box" style="background-image: url('https://images.unsplash.com/photo-1564289640371-a908d653c7cf?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"><div class="nav-text">Practice makes Perfection</div></a>
       <a href="article3.html" class="nav-box" style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"><div class="nav-text">No Pain, No Gain.</div></a>
       <a href="article4.html" class="nav-box" style="background-image: url('https://plus.unsplash.com/premium_photo-1683749805319-2c481ae54bc1?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"><div class="nav-text">Success is not an Accident.</div></a>
       <a href="article5.html" class="nav-box" style="background-image: url('https://images.unsplash.com/photo-1707276378549-37a2c83759af?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"><div class="nav-text">Stay Hungry, Stay Foolish.</div></a>
@@ -272,19 +308,49 @@
 
     const MIN_PRELOADER_TIME = 500;
     const preloader = document.getElementById('preloader');
+
     document.addEventListener('DOMContentLoaded', () => {
+      /* === Preloader hide === */
       setTimeout(() => {
         preloader.classList.add('hidden');
         document.body.style.overflow = 'auto';
       }, MIN_PRELOADER_TIME);
 
-      // === Sidebar Fix ===
+      /* === Sidebar === */
       const sidebar = document.getElementById("sidebar");
       const menuBtn = document.getElementById("menuBtn");
       menuBtn.onclick = () => {
         sidebar.style.width = window.innerWidth <= 768 ? "75%" : "250px";
       };
       window.closeSidebar = () => { sidebar.style.width = "0"; };
+
+      /* === NEW: Micro-animations init === */
+      // Apply subtle animations to header elements
+      document.querySelector(".title-section img")?.classList.add("float-logo");
+      document.querySelector(".title-section h1")?.classList.add("pulse-title");
+
+      // Fade-up on scroll for tiles (progressive enhancement + fallback)
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            entry.target.classList.remove("hidden");
+            observer.unobserve(entry.target); // animate once
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll(".nav-box, .book-nav-box").forEach((el, i) => {
+        // Staggered feel
+        el.style.transitionDelay = `${i * 0.12}s`;
+        // Make it animatable but never disappear if JS fails
+        el.classList.add("fade-up");
+        // Defer adding 'hidden' to avoid FOUC and keep progressive enhancement
+        requestAnimationFrame(() => {
+          el.classList.add("hidden");
+          observer.observe(el);
+        });
+      });
     });
   </script>
 
@@ -304,4 +370,3 @@
 
 </body>
 </html>
-
